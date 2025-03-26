@@ -46,11 +46,19 @@ Below are some of the key results from our simulations:
 
 ![BER vs Eb/N0 with ε2 and QPSK](images/BER%20vs%20Eb:N0%20with%20ε2%20and%20QPSK.jpg)
 
+This figure demonstrates the relationship between Bit Error Rate (BER) and Signal-to-Noise Ratio (Eb/N0) when using an ε2 convolutional encoder with QPSK modulation. The graph compares theoretical upper bounds with actual simulation results, validating that the system performance aligns with theoretical expectations. It can be observed that as Eb/N0 increases, BER decreases exponentially, indicating that coding techniques effectively enhance communication system reliability.
+
 ![Performance Comparison between Hard and Soft Receivers](images/Performance%20Comparison%20between%20Hard%20and%20Soft%20Receivers%20.jpg)
+
+This graph compares the performance of hard-decision and soft-decision Viterbi decoders under identical channel conditions. The figure clearly illustrates that soft-decision receivers outperform hard-decision receivers across all signal-to-noise ratios, with particularly significant performance improvements in the medium SNR range (approximately 5-8dB). This is because soft-decision decoders utilize confidence information from the received signals rather than just binary decision results, thereby providing more reliable decoding performance in noisy environments.
 
 ![Performance Comparison between 3 Systems](images/Performance%20Comparison%20between%203%20Systems%20.jpg)
 
+This figure presents a performance comparison of three different system configurations: uncoded systems, convolutional coded systems, and LDPC coded systems. The results clearly demonstrate the importance of coding techniques in improving system noise resistance. At the same BER level, coded systems require lower SNR compared to uncoded systems, exhibiting significant coding gain. LDPC coding, in particular, shows excellent performance in high SNR regions, approaching the Shannon limit and demonstrating the powerful potential of modern coding technology.
+
 ![Performance Comparison of Different Rate-1:2 Convolutional Encoders](images/Performance%20Comparison%20of%20Different%20Rate-1:2%20Convolutional%20Encoders.jpg)
+
+This graph compares the performance of rate-1:2 convolutional encoders with different constraint lengths. It can be observed that encoders with longer constraint lengths provide better coding performance, as they offer stronger error correction capabilities. However, this performance improvement comes at the cost of increased decoding complexity. The figure also shows the correlation between theoretical bounds and actual simulation results, verifying the correctness of the system implementation and providing reference for encoder selection in different application scenarios.
 
 ---
 
@@ -89,9 +97,9 @@ Below are some of the key results from our simulations:
 - `mapper.m`：将编码比特映射成QPSK符号
 - `awgn.m`：为调制符号添加高斯噪声
 - `demapper.m`：将接收到的符号解调回比特
-- `hard_decoder.m`：实现带硬判决度量的Viterbi算法
-- `soft_new.m`：使用欧几里得距离实现软解码
-- `traceback*.m`：为不同编码器实现回溯算法
+- `hard_decoder.m`：实现带硬判决度量的Viterbi解码算法
+- `soft_new.m`：通过比较欧几里得距离使用软解码
+- `traceback.m`：根据不同的编码器实现回溯算法
 - `main.m`：用于各种配置的主仿真脚本
 
 ## 结果
@@ -102,11 +110,19 @@ Below are some of the key results from our simulations:
 
 ![BER vs Eb/N0与ε2和QPSK](images/BER%20vs%20Eb:N0%20with%20ε2%20and%20QPSK.jpg)
 
+该图展示了使用ε2卷积编码器和QPSK调制方案时，比特错误率(BER)与信噪比(Eb/N0)的关系。图中包含了理论上界曲线和实际仿真结果的对比，验证了系统性能符合理论预期。可以观察到随着Eb/N0的增加，BER呈指数级下降，这表明编码技术有效提高了通信系统的可靠性。
+
 ![硬判决和软判决接收器性能比较](images/Performance%20Comparison%20between%20Hard%20and%20Soft%20Receivers%20.jpg)
+
+该图比较了硬判决和软判决Viterbi解码器在相同信道条件下的性能表现。从图中可以清晰地看出，软判决接收器在各个信噪比下均优于硬判决接收器，尤其是在中等信噪比区域（约5-8dB）性能提升更为显著。这是因为软判决解码器利用了接收信号的置信度信息，而不仅仅是二进制判决结果，从而在噪声环境中提供了更可靠的解码性能。
 
 ![三种系统性能比较](images/Performance%20Comparison%20between%203%20Systems%20.jpg)
 
+该图展示了三种不同系统配置的性能比较：未编码系统、卷积编码系统和LDPC编码系统。结果清晰地表明了编码技术对提高系统抗噪能力的重要性。在相同BER水平下，编码系统相比未编码系统需要更低的信噪比，表现出明显的编码增益。特别是LDPC编码在高信噪比区域表现出色，接近Shannon极限，展示了现代编码技术的强大潜力。
+
 ![不同速率1:2卷积编码器性能比较](images/Performance%20Comparison%20of%20Different%20Rate-1:2%20Convolutional%20Encoders.jpg)
+
+该图比较了不同约束长度的率为1:2的卷积编码器性能。从图中可以观察到，约束长度越长，编码性能越好，这是因为更长的约束长度提供了更强的纠错能力。然而，这种性能提升是以增加解码复杂度为代价的。图中还显示了理论上界与实际仿真结果的吻合程度，验证了系统实现的正确性，并为不同应用场景下的编码器选择提供了参考依据。
 
 # 必要文件说明
 
